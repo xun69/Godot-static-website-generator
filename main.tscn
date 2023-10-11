@@ -1585,7 +1585,7 @@ layout_mode = 2
 [node name="createDocBtn" type="Button" parent="Tab/文档/VBox/Grid"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
-text = "生成"
+text = "生成文档静态站"
 icon = ExtResource("3_koin3")
 alignment = 0
 
