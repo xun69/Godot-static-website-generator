@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="HTML文档生成器"
+config/name="Godot静态网站生成器"
+config/description="- 基于MarkDown生成静态文档
+- 基于图片文件夹生成图片库
+- 基于多个视频创建视频合集静态网页"
+config/tags=PackedStringArray("github仓库", "应用程序")
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://face.png"
 
 [display]
 
