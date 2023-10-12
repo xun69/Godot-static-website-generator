@@ -1517,6 +1517,84 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="gd2MD" type="PanelContainer" parent="Tab"]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Tab/gd2MD"]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Tab/gd2MD/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Tab/gd2MD/Scroll/VBox"]
+layout_mode = 2
+text = "生成整个Godot项目的MarkDown文档"
+label_settings = SubResource("LabelSettings_hn3g0")
+
+[node name="Label2" type="Label" parent="Tab/gd2MD/Scroll/VBox"]
+layout_mode = 2
+text = "- 需要指定一个本地Godot项目根目录或子目录，会自动递归和遍历所有目录及子目录下的.gd文件，生成相应的MarkDown文档。
+- 最终会在文档根目录生成index.md，并在其中生成整个文档的层级目录
+- 结合文档生成，可以将.md结构的文档转化为.html的静态文档
+- 无论是MD形式还是.html形式都可以更方便的分享您的项目代码"
+label_settings = SubResource("LabelSettings_d03v4")
+
+[node name="Grid" type="GridContainer" parent="Tab/gd2MD/Scroll/VBox"]
+layout_mode = 2
+columns = 2
+
+[node name="lab3" type="Label" parent="Tab/gd2MD/Scroll/VBox/Grid"]
+layout_mode = 2
+text = "项目目录"
+label_settings = SubResource("LabelSettings_3xlqv")
+
+[node name="HBox2" type="HBoxContainer" parent="Tab/gd2MD/Scroll/VBox/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="gdRootDirTxt" type="LineEdit" parent="Tab/gd2MD/Scroll/VBox/Grid/HBox2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "选择Godot项目根目录"
+
+[node name="gdSetDirBtn" type="Button" parent="Tab/gd2MD/Scroll/VBox/Grid/HBox2"]
+layout_mode = 2
+text = "设定"
+icon = ExtResource("2_3yg2x")
+
+[node name="lab2" type="Label" parent="Tab/gd2MD/Scroll/VBox/Grid"]
+layout_mode = 2
+text = "导出目录"
+label_settings = SubResource("LabelSettings_3xlqv")
+
+[node name="HBox" type="HBoxContainer" parent="Tab/gd2MD/Scroll/VBox/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="gd2mdRootDirTxt" type="LineEdit" parent="Tab/gd2MD/Scroll/VBox/Grid/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "选择MD文档导出目录"
+
+[node name="gd2mdSetDirBtn" type="Button" parent="Tab/gd2MD/Scroll/VBox/Grid/HBox"]
+layout_mode = 2
+text = "设定"
+icon = ExtResource("2_3yg2x")
+
+[node name="Label" type="Control" parent="Tab/gd2MD/Scroll/VBox/Grid"]
+layout_mode = 2
+
+[node name="createMdDocBtn" type="Button" parent="Tab/gd2MD/Scroll/VBox/Grid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "生成MD文档"
+icon = ExtResource("3_koin3")
+alignment = 0
+
 [node name="文档" type="PanelContainer" parent="Tab"]
 visible = false
 layout_mode = 2
@@ -1693,84 +1771,6 @@ text = "生成图库静态站"
 icon = ExtResource("3_koin3")
 alignment = 0
 
-[node name="gd2MD" type="PanelContainer" parent="Tab"]
-layout_mode = 2
-
-[node name="Scroll" type="ScrollContainer" parent="Tab/gd2MD"]
-layout_mode = 2
-
-[node name="VBox" type="VBoxContainer" parent="Tab/gd2MD/Scroll"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="Tab/gd2MD/Scroll/VBox"]
-layout_mode = 2
-text = "生成整个Godot项目的MarkDown文档"
-label_settings = SubResource("LabelSettings_hn3g0")
-
-[node name="Label2" type="Label" parent="Tab/gd2MD/Scroll/VBox"]
-layout_mode = 2
-text = "- 需要指定一个本地Godot项目根目录或子目录，会自动递归和遍历所有目录及子目录下的.gd文件，生成相应的MarkDown文档。
-- 最终会在文档根目录生成index.md，并在其中生成整个文档的层级目录
-- 结合文档生成，可以将.md结构的文档转化为.html的静态文档
-- 无论是MD形式还是.html形式都可以更方便的分享您的项目代码"
-label_settings = SubResource("LabelSettings_d03v4")
-
-[node name="Grid" type="GridContainer" parent="Tab/gd2MD/Scroll/VBox"]
-layout_mode = 2
-columns = 2
-
-[node name="lab3" type="Label" parent="Tab/gd2MD/Scroll/VBox/Grid"]
-layout_mode = 2
-text = "项目目录"
-label_settings = SubResource("LabelSettings_3xlqv")
-
-[node name="HBox2" type="HBoxContainer" parent="Tab/gd2MD/Scroll/VBox/Grid"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="gdRootDirTxt" type="LineEdit" parent="Tab/gd2MD/Scroll/VBox/Grid/HBox2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "选择Godot项目根目录"
-
-[node name="gdSetDirBtn" type="Button" parent="Tab/gd2MD/Scroll/VBox/Grid/HBox2"]
-layout_mode = 2
-text = "设定"
-icon = ExtResource("2_3yg2x")
-
-[node name="lab2" type="Label" parent="Tab/gd2MD/Scroll/VBox/Grid"]
-layout_mode = 2
-text = "导出目录"
-label_settings = SubResource("LabelSettings_3xlqv")
-
-[node name="HBox" type="HBoxContainer" parent="Tab/gd2MD/Scroll/VBox/Grid"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="gd2mdRootDirTxt" type="LineEdit" parent="Tab/gd2MD/Scroll/VBox/Grid/HBox"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "选择MD文档导出目录"
-
-[node name="gd2mdSetDirBtn" type="Button" parent="Tab/gd2MD/Scroll/VBox/Grid/HBox"]
-layout_mode = 2
-text = "设定"
-icon = ExtResource("2_3yg2x")
-
-[node name="Label" type="Control" parent="Tab/gd2MD/Scroll/VBox/Grid"]
-layout_mode = 2
-
-[node name="createMdDocBtn" type="Button" parent="Tab/gd2MD/Scroll/VBox/Grid"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "生成MD文档"
-icon = ExtResource("3_koin3")
-alignment = 0
-
 [node name="FileDialog" type="FileDialog" parent="."]
 unique_name_in_owner = true
 title = "Open a Directory"
@@ -1780,10 +1780,10 @@ ok_button_text = "选择当前文件夹"
 file_mode = 2
 access = 2
 
+[connection signal="pressed" from="Tab/gd2MD/Scroll/VBox/Grid/HBox2/gdSetDirBtn" to="." method="_on_gd_set_dir_btn_pressed"]
+[connection signal="pressed" from="Tab/gd2MD/Scroll/VBox/Grid/HBox/gd2mdSetDirBtn" to="." method="_on_gd_2_md_set_dir_btn_pressed"]
+[connection signal="pressed" from="Tab/gd2MD/Scroll/VBox/Grid/createMdDocBtn" to="." method="_on_create_md_doc_btn_pressed"]
 [connection signal="pressed" from="Tab/文档/Scroll/VBox/Grid/HBox/setDirBtn" to="." method="_on_set_dir_btn_pressed"]
 [connection signal="pressed" from="Tab/文档/Scroll/VBox/Grid/createDocBtn" to="." method="_on_create_doc_btn_pressed"]
 [connection signal="pressed" from="Tab/图库/Scroll/VBox/Grid/HBox/albumSetDirBtn" to="." method="_on_album_set_dir_btn_pressed"]
 [connection signal="pressed" from="Tab/图库/Scroll/VBox/Grid/createAlbumBtn" to="." method="_on_create_album_btn_pressed"]
-[connection signal="pressed" from="Tab/gd2MD/Scroll/VBox/Grid/HBox2/gdSetDirBtn" to="." method="_on_gd_set_dir_btn_pressed"]
-[connection signal="pressed" from="Tab/gd2MD/Scroll/VBox/Grid/HBox/gd2mdSetDirBtn" to="." method="_on_gd_2_md_set_dir_btn_pressed"]
-[connection signal="pressed" from="Tab/gd2MD/Scroll/VBox/Grid/createMdDocBtn" to="." method="_on_create_md_doc_btn_pressed"]
