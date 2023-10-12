@@ -105,16 +105,14 @@ func create_index_page():
 		# 遍历一级子文件夹 - 具体图片文件夹
 		for dir in sub_dirs:
 			var img_dir = "%s/%s" % [gup_dir_path,dir]        # 具体的图片子文件夹
+			img_dir = img_dir.replace("/","\\")
 			# 获取封面
 			var face:String = ""
-			if myFile.get_sub_filter_files(img_dir,"webp").size() >0:
-				face = myFile.get_sub_filter_files(img_dir,"webp")[0]
-			elif myFile.get_sub_filter_files(img_dir,"jpg").size() >0:
-				face = myFile.get_sub_filter_files(img_dir,"jpg")[0]
-			elif myFile.get_sub_filter_files(img_dir,"png").size() >0:
-				face = myFile.get_sub_filter_files(img_dir,"png")[0]
-			elif myFile.get_sub_filter_files(img_dir,"jpeg").size() >0:
-				face = myFile.get_sub_filter_files(img_dir,"jpeg")[0]
+			var imgs:PackedStringArray = []
+			for type in IMG_TYPES:
+				var files = myFile.get_sub_filter_files(img_dir,type)
+				imgs.append_array(files)
+			face = imgs[0] if imgs.size() >0 else ""
 			
 			card_links_arr.append([dir, "%s/%s.html" % [img_root_dir_name,dir],img_dir + "/" + face])
 		main += card_link_lists(gup_dir,card_links_arr) # 卡片列表

@@ -114,7 +114,7 @@ static func center_1400px(content:String,pt50:bool = false) -> String:
 	return html.replace("{pt50}",pt50_str)
 
 # =================================== 自定义区域 ===================================
-const IMG_TYPES = ["webp","jpg","png","jpeg"] # 支持的图片格式
+const IMG_TYPES = ["webp","jpg","png","jpeg","gif"] # 支持的图片格式
 # 图片瀑布流页面 - 返回对应的html代码
 # img_dir:       为具体的图片文件夹路径   = index_dir/img_dir_name/sub_dir
 # url_base_path: 网页中使用的基础相对路径 = img_dir_name/sub_dir
