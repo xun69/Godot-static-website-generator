@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{page_title}</title>
+	<link rel="stylesheet" href="index.css">
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+			//设置图片列数
+			$("#col_nums").on("change",function(){
+				var cols = $("#col_nums").val();//列数
+				$(".img_list").css("column-count",cols);
+			})
+			//设置图片列数
+			$("#bg_color").on("change",function(){
+				var bg = $("#bg_color").val();
+				$("body").css("background-color",bg);
+			})
+		})
+	</script>
+</head>
+<body>
+
+{content}
+
+</body>
+</html>

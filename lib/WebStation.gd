@@ -5,44 +5,18 @@
 # 作者：巽星石
 # Godot版本：4.1.1-stable (official)
 # 创建时间：2023-08-10 21:32:15
-# 最后修改时间：2023年8月15日21:04:53
+# 最后修改时间：2023年10月12日22:54:18
 # ========================================================
 class_name WebStation
+
+
+
 
 # =================================== 基础页面 ===================================
 # HTML页面框架代码
 static func page(page_title:String,content:String) -> String:
-	var html = """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{page_title}</title>
-	<link rel="stylesheet" href="index.css">
-	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-	<script>
-		$(function(){
-			//设置图片列数
-			$("#col_nums").on("change",function(){
-				var cols = $("#col_nums").val();//列数
-				$(".img_list").css("column-count",cols);
-			})
-			//设置图片列数
-			$("#bg_color").on("change",function(){
-				var bg = $("#bg_color").val();
-				$("body").css("background-color",bg);
-			})
-		})
-	</script>
-</head>
-<body>
-
-{content}
-
-</body>
-</html>
-"""
+	var myFile = preload("res://lib/myFile.gd").new()
+	var html = myFile.loadString("res://lib/tmps/picStation/base.html")
 	html = html.replace("{page_title}",page_title)
 	html = html.replace("{content}",content)
 	return html
@@ -246,188 +220,7 @@ static func img_toolbar() -> String:
 
 
 
-
-
 # =================================== CSS样式表 ===================================
 static func index_css() -> String:
-	return """/*==================================================
-名称：index.css 
-描述：专用于Godot静态网站生成的CSS样式表，结合WebStation函数库
-作者：巽星石
-创建时间：2023年8月10日20:20:08
-最后修改时间：2023年8月26日12:55:00
-================================================== */
-
-
-:root{
-	--line-color:rgba(58, 104, 255, 0.441);
-	--bg--color: #242424;
-}
-body{
-	background-color: #242424;
-	background-image:
-		linear-gradient(var(--line-color) 50%,transparent 50%),
-		linear-gradient(90deg,var(--line-color) 50%,transparent 50%);
-	background-size: 20px 20px;
-}
-
-/*-======================================== 默认样式清除 ========================================-*/
-*{margin:0px;padding: 0px;}
-ul,li{list-style: none;}
-h1,h2,h3,h4,h5,h6{margin: 5px 0px;padding:0px 5px;}
-a{text-decoration: none;color:#4babe6;}
-a:hover{text-decoration: underline;color:#114362;}
-/*-======================================== 一般样式设定  ========================================-*/
-/*- 一般正文H1-H6设定 -*/
-h1{border-bottom:1px solid #4babe6;}
-h2{border-bottom: 1px solid #ffffff;
-	color: #fff;
-}
-
-/*-======================================== 布局 ========================================-*/
-/*- 左边栏，右主区 -*/
-.layout_left_main{
-	display: grid;
-	grid-template-columns: 200px calc(100% - 200px - 20px);
-	column-gap: 10px;
-}
-/*- 左边栏，右主区 -*/
-.layout_main_right{
-	display: grid;
-	grid-template-columns: calc(100% - 200px - 20px) 200px;
-	column-gap: 10px;
-}
-/*- 居中 -*/
-.center_100pc{width:100%;}/*- 100% 居中 -*/
-.center_90pc{width:90%;margin: 0px auto;}/*- 90% 居中 -*/
-.center_80pc{width:80%;margin: 0px auto;}/*- 80% 居中 -*/
-.center_1000px{width:1000px;margin: 0px auto;}/*- 1000像素 居中 -*/
-.center_1200px{width:1200px;margin: 0px auto;}/*- 1000像素 居中 -*/
-.center_1400px{width:1400px;margin: 0px auto;}/*- 1000像素 居中 -*/
-
-/*- 分栏 -*/
-.colm_layout{column-gap:5px;} /*- 统一分栏间隔 -*/
-.col_2{column-count:2;}/*- 2栏 -*/
-.col_3{column-count:3;}/*- 3栏 -*/
-.col_4{column-count:4;}/*- 4栏 -*/
-.col_5{column-count:3;}/*- 5栏 -*/
-.col_6{column-count:4;}/*- 6栏 -*/
-/*- 图片分栏瀑布流 -*/
-.img_list img{
-	border-radius: 5px;border:1px solid #f7f7f7;
-	max-width: calc(100% - 20px);
-	padding: 10px;
-	background-color: #fff;
-}
-
-/*-======================================== 顶部菜单 ========================================-*/
-.fix_top_menu{width:100%;height:40px;position: fixed;left: 0px;top:0px;}
-.fix_top_menu h1,ul,li{display: inline;}
-.fix_top_menu h1{border-bottom:none;font-size: 30px;color:#fff;}
-.fix_top_menu a{display: inline-block;background-color: #310915;padding:5px;color: aliceblue;}
-
-/*- 背景色：深红 -*/
-.bg_dack_red{
-	background-image: linear-gradient(45deg,#2196F3,#607D8B);
-	border-bottom: 1px solid #00fff3;
-} 
-.pt50{padding-top: 50px;}/*- 顶部内边距50 用于有顶部菜单时正文区的显示修正 -*/
-.icon{width:20px;border-radius: 0px;border:none;}
-
-/*-======================================== 自定义区域 ========================================-*/
-
-/*-===== 高亮区 =====-*/
-/*
-显示与语雀“高亮区”类似的效果。
-<div class="heighlight_panel notice">
-	<h3 class="title">注意</h3>
-	<div class="content">
-		<p>这里说的是一般情况。</p>
-	</div>
-</div>
-其中heighlight_panel为一般高亮区设定，notice是具体的高亮区设定。
-*/
-.heighlight_panel{
-	width:100%;
-	border:1px solid #ccc;border-radius: 5px;
-}
-.heighlight_panel h3.title{padding: 2px 5px;margin: 0px;}
-.heighlight_panel .content{padding:5px;}
-/*- 注意 -*/
-.notice{background-color: rgb(253 255 208);border:1px solid #e6eb80;}
-.notice h3.title{color:#6e7127;}
-
-/*-===== 带标题的面板 =====-*/
-/*
-一个带标题的面板，可以作为侧边栏或正文块使用。
-<div class="title_panel">
-  <h3 class="title">标题</h3>
-  <div class="content">
-	内容在这里
-  </div>
-</div>
-*/
-.title_panel{
-	width:100%;
-	border:1px solid rgb(252, 225, 255);
-	border-radius: 5px;
-	background-color: #fff;
-}
-.title_panel h3.title{
-	border-bottom: 1px solid rgb(252, 225, 255);
-	background-color: #ffe7ea;
-	color: #761822;
-	padding: 2px 5px;margin: 0px;
-}
-.title_panel .content{padding:5px;}
-
-/*-===== 链接列表 =====-*/
-.toolbar{
-	width:200px;
-	position: fixed;top:60px;right:5px;
-}
-.toolbar .content{display:grid;grid-template-columns: 100px auto;row-gap: 5px;}
-
-
-/*-===== 图片链接 =====-*/
-/*
-一个以圆角矩形卡片显示的带封面和标题的链接。
-<div class="cards">
-<div class="card">
-	<a href="https://www.baidu.com/">
-		<img src="https://www.baidu.com/img/flexible/logo/pc/result@2.png">
-		<h4>百度<h4>
-	</a>
-</div><div class="card">
-	<a href="https://www.bilibili.com/">
-		<img src="https://i0.hdslb.com/bfs/archive/c8fd97a40bf79f03e7b76cbc87236f612caef7b2.png">
-		<h4>B站<h4>
-	</a>
-</div>
-</div>
-*/
-.card{
-	width:190px;display: inline-block;
-	border-radius: 10px;
-	margin-top:5px;
-	background: #2f2f2f;
-}
-
-.card a{text-decoration: none;color: #a3a3a3;}
-.card img{
-	width:100%;aspect-ratio: 2;
-	object-fit: cover;
-	border-radius: 5px 5px 0px 0px;
-	transition:object-position 1s;
-}
-.card img:hover{object-position: left bottom;}
-.card h4{text-align: center;font-weight: normal;}
-
-/*-===== 链接列表 =====-*/
-/*
-<ul class="link_list">
-	<li><a href="https://www.baidu.com/" target="_blank">百度</a></li>
-	<li><a href="https://www.bilibili.com/" target="_blank">B站</a></li>
-</ul>
-*/
-.link_list,.link_list li{display: block;}"""
+	var myFile = preload("res://lib/myFile.gd").new()
+	return myFile.loadString("res://lib/tmps/picStation/index.css")
