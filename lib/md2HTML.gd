@@ -178,7 +178,11 @@ static func parse_link(md:String,target:String = "_blank"):
 			var md_url = mat.get_string()
 			var title = mat.get_string(1)
 			var url = mat.get_string(2)
-			md = md.replace(md_url,A(url,title,"target=\"%s\"" % target))
+			if url.ends_with(".md"):
+				url = url.replace(".md",".html")
+				md = md.replace(md_url,A(url,title))
+			else:
+				md = md.replace(md_url,A(url,title,"target=\"%s\"" % target))
 	return md
 
 # Markdown:图片 --> HTML:图片
