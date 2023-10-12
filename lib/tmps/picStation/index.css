@@ -13,10 +13,6 @@
 }
 body{
 	background-color: #242424;
-	background-image:
-		linear-gradient(var(--line-color) 50%,transparent 50%),
-		linear-gradient(90deg,var(--line-color) 50%,transparent 50%);
-	background-size: 20px 20px;
 }
 
 /*-======================================== 默认样式清除 ========================================-*/
@@ -163,7 +159,7 @@ h2{border-bottom: 1px solid #ffffff;
 
 .card a{text-decoration: none;color: #a3a3a3;}
 .card img{
-	width:100%;aspect-ratio: 2;
+	width:100%;aspect-ratio: 3/4;;
 	object-fit: cover;
 	border-radius: 5px 5px 0px 0px;
 	transition:object-position 1s;
